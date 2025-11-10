@@ -52,6 +52,7 @@ public class TicTacToe {
         restarttext.setForeground(Color.white);
         restarttext.setHorizontalAlignment(JLabel.CENTER);
 
+        restart.setLayout(new BorderLayout());
         restart.setBackground(Color.darkGray);
         restart.add(restarttext, BorderLayout.CENTER);
 
@@ -84,13 +85,15 @@ public class TicTacToe {
                                 textLabel.setText(currentPlayer + "'s turn");
                             }
 
-                        }
+                        } 
 
                     }
                 });
 
             }
         }
+
+        restart.addActionListener(e -> reset(restart));
     }
 
     void checkWinner() {
@@ -159,5 +162,15 @@ public class TicTacToe {
         tile.setForeground(Color.orange);
         textLabel.setText("Tie!");
         tile.setBackground(Color.gray);
+    }
+
+    void reset(JButton tile) {
+        for (int r = 0 ; r < 3 ; ++r) {
+            for (int c = 0 ; c < 3 ; ++c) {
+                board[r][c].setText("");
+            }
+
+        }
+        textLabel.setText("Tic-Tac-Toe");
     }
 }
